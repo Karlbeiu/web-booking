@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Étoile Dorée | Premium Restaurant Booking & Fine Dining</title>
+  <meta name="description" content="Experience fine dining at L'Étoile Dorée. Reserve your luxury table online with our interactive table selector map, preview our seasonal menu, and manage your reservations.">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Custom Notification Toast Container -->
+  <div class="notification-container" id="notification-container"></div>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#home" class="logo">
+        <i class="fa-solid fa-utensils logo-icon"></i>
+        <span>L'ÉTOILE <span class="gold-text">DORÉE</span></span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">Our Story</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#booking" class="nav-link">Reservation</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" id="btn-view-bookings-nav">
+          <i class="fa-solid fa-calendar-days" style="margin-right: 0.5rem;"></i>My Bookings
+        </button>
+        <a href="#booking" class="btn btn-primary">Book A Table</a>
+      </div>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <a href="#home" class="logo">
+        <i class="fa-solid fa-utensils logo-icon"></i>
+        <span>L'ÉTOILE <span class="gold-text">DORÉE</span></span>
+      </a>
+      <div class="mobile-nav-close" id="mobile-nav-close">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#home" class="mobile-nav-link active">Home</a>
+      <a href="#about" class="mobile-nav-link">Our Story</a>
+      <a href="#menu" class="mobile-nav-link">Menu</a>
+      <a href="#booking" class="mobile-nav-link">Reservation</a>
+    </div>
+    <button class="btn btn-outline" id="btn-view-bookings-mobile" style="margin-top: 1rem;">
+      <i class="fa-solid fa-calendar-days" style="margin-right: 0.5rem;"></i>My Bookings
+    </button>
+    <a href="#booking" class="btn btn-primary" id="mobile-book-btn" style="margin-top: 1rem; text-align: center;">Book A Table</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-tagline">Welcome to Gastronomical Perfection</p>
+      <h1>Where Culinary Art Meets <span class="gold-text">Luxury</span></h1>
+      <p class="hero-description">An exceptional culinary journey curated by master chef Jean-Luc Dorée. Indulge in award-winning seasonal menus crafted with passion and elegance.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn btn-primary">Reserve Table</a>
+        <a href="#menu" class="btn btn-outline">Explore Menu</a>
+      </div>
+    </div>
+    <a href="#about" class="scroll-down">
+      <span>Our Story</span>
+      <div class="scroll-down-mouse">
+        <div class="scroll-down-wheel"></div>
+      </div>
+    </a>
+  </section>
+
+  <!-- About / Story Section -->
+  <section class="about reveal" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-container">
+          <div class="about-img-frame">
+            <img src="chef_portrait.png" alt="Chef Jean-Luc Dorée at work" class="about-img">
+          </div>
+          <div class="about-img-badge">
+            <span>MICHELIN<br><strong>3 STARS</strong><br>SINCE 2021</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-subtitle">Since 2018</span>
+          <h3>Crafting Moments of Pure Gastronomy</h3>
+          <p>L’Étoile Dorée was founded on the simple philosophy of elevating local ingredients through contemporary French culinary techniques. Under the direction of Executive Chef Jean-Luc Dorée, we have built a sanctuary for those who appreciate precise cooking, balanced flavors, and unmatched hospitality.</p>
+          <p>Every plate is designed as a canvas, celebrating color, texture, and taste in perfect harmony. We invite you to experience our legendary dining salon and create unforgettable memories around our tables.</p>
+          <div class="chef-signature">
+            <img src="https://assets.codepen.io/162656/signature.svg" alt="Chef Signature" class="signature-svg" style="display:none;"> <!-- Fallback text signature if image fails -->
+            <div class="chef-info">
+              <h5>Jean-Luc Dorée</h5>
+              <p>Executive Head Chef & Founder</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu reveal" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">The Culinary Selection</span>
+        <h2 class="section-title">Chef's Curated Menu</h2>
+      </div>
+
+      <div class="menu-filters">
+        <button class="menu-filter-btn active" data-category="all">All Dishes</button>
+        <button class="menu-filter-btn" data-category="starters">Starters</button>
+        <button class="menu-filter-btn" data-category="mains">Mains</button>
+        <button class="menu-filter-btn" data-category="desserts">Desserts</button>
+        <button class="menu-filter-btn" data-category="signatures">Signatures</button>
+      </div>
+
+      <div class="menu-grid" id="menu-grid">
+        <!-- Menu items will be injected by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking / Reservation Section -->
+  <section class="booking reveal" id="booking">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Table Reservation</span>
+        <h2 class="section-title">Book Your Dining Experience</h2>
+      </div>
+
+      <div class="booking-panel glass-panel">
+        <form id="reservation-form" novalidate>
+          <div class="floorplan-container">
+            
+            <!-- Left Side: Table Map & Preferences -->
+            <div class="floorplan-main">
+              <!-- Step 1: Dining Details -->
+              <h3 class="booking-step-title"><span>1</span> Choose Preferences</h3>
+              <div class="booking-form-grid">
+                <div class="form-group">
+                  <label for="booking-date">Date</label>
+                  <div class="form-input-wrapper">
+                    <i class="fa-regular fa-calendar"></i>
+                    <input type="date" class="form-input" id="booking-date" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="booking-time">Time Session</label>
+                  <div class="form-input-wrapper">
+                    <i class="fa-regular fa-clock"></i>
+                    <select class="form-input" id="booking-time" required>
+                      <option value="" disabled selected>Select session</option>
+                      <option value="17:00">5:00 PM (Early Dinner)</option>
+                      <option value="18:30">6:30 PM (Prime Dinner)</option>
+                      <option value="20:00">8:00 PM (Late Dinner)</option>
+                      <option value="21:30">9:30 PM (Night Dinner)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="booking-guests">Guests</label>
+                  <div class="form-input-wrapper">
+                    <i class="fa-solid fa-users"></i>
+                    <select class="form-input" id="booking-guests" required>
+                      <option value="1">1 Guest</option>
+                      <option value="2" selected>2 Guests</option>
+                      <option value="3">3 Guests</option>
+                      <option value="4">4 Guests</option>
+                      <option value="5">5 Guests</option>
+                      <option value="6">6 Guests</option>
+                      <option value="8">8 Guests (VIP)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Visual Table Selector -->
+              <h3 class="booking-step-title" style="margin-top: 2rem;"><span>2</span> Select Your Preferred Table</h3>
+              <div class="floorplan-map-wrapper">
+                <div class="floorplan-legend">
+                  <div class="legend-item">
+                    <div class="legend-color available"></div>
+                    <span>Available</span>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-color selected"></div>
+                    <span>Your Selection</span>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-color occupied"></div>
+                    <span>Occupied</span>
+                  </div>
+                </div>
+
+                <!-- SVG Floorplan Map -->
+                <svg class="restaurant-map" viewBox="0 0 500 350" id="floor-svg">
+                  <!-- Walls & Structure -->
+                  <line x1="10" y1="10" x2="490" y2="10" class="map-wall" />
+                  <line x1="490" y1="10" x2="490" y2="340" class="map-wall" />
+                  <line x1="490" y1="340" x2="10" y2="340" class="map-wall" />
+                  <line x1="10" y1="340" x2="10" y2="10" class="map-wall" />
+                  
+                  <text x="250" y="30" class="map-label" text-anchor="middle">Main Stage & Live Piano</text>
+                  <line x1="180" y1="45" x2="320" y2="45" stroke="#c5a880" stroke-width="1" opacity="0.3" />
+
+                  <!-- Entrance -->
+                  <text x="250" y="330" class="map-label" text-anchor="middle">Foyer & Entrance</text>
+
+                  <!-- 2-Seater Tables (Couple Seating) -->
+                  <!-- Table 1 (Top Left) -->
+                  <g class="map-table available" id="table-1" data-table-id="1" data-capacity="2">
+                    <circle cx="80" cy="90" r="22" />
+                    <!-- Seats -->
+                    <circle cx="80" cy="60" r="6" class="map-seat" />
+                    <circle cx="80" cy="120" r="6" class="map-seat" />
+                    <text x="80" y="90">T1 (2)</text>
+                  </g>
+
+                  <!-- Table 2 (Top Right) -->
+                  <g class="map-table available" id="table-2" data-table-id="2" data-capacity="2">
+                    <circle cx="420" cy="90" r="22" />
+                    <circle cx="420" cy="60" r="6" class="map-seat" />
+                    <circle cx="420" cy="120" r="6" class="map-seat" />
+                    <text x="420" y="90">T2 (2)</text>
+                  </g>
+
+                  <!-- Table 3 (Bottom Left) -->
+                  <g class="map-table available" id="table-3" data-table-id="3" data-capacity="2">
+                    <circle cx="80" cy="250" r="22" />
+                    <circle cx="80" cy="220" r="6" class="map-seat" />
+                    <circle cx="80" cy="280" r="6" class="map-seat" />
+                    <text x="80" y="250">T3 (2)</text>
+                  </g>
+
+                  <!-- Table 4 (Bottom Right) -->
+                  <g class="map-table available" id="table-4" data-table-id="4" data-capacity="2">
+                    <circle cx="420" cy="250" r="22" />
+                    <circle cx="420" cy="220" r="6" class="map-seat" />
+                    <circle cx="420" cy="280" r="6" class="map-seat" />
+                    <text x="420" y="250">T4 (2)</text>
+                  </g>
+
+                  <!-- 4-Seater Tables (Standard Family/Group) -->
+                  <!-- Table 5 (Center Left) -->
+                  <g class="map-table available" id="table-5" data-table-id="5" data-capacity="4">
+                    <rect x="150" y="145" width="50" height="50" rx="8" />
+                    <!-- Seats -->
+                    <circle cx="175" cy="130" r="6" class="map-seat" />
+                    <circle cx="175" cy="210" r="6" class="map-seat" />
+                    <circle cx="135" cy="170" r="6" class="map-seat" />
+                    <circle cx="215" cy="170" r="6" class="map-seat" />
+                    <text x="175" y="170">T5 (4)</text>
+                  </g>
+
+                  <!-- Table 6 (Center Right) -->
+                  <g class="map-table available" id="table-6" data-table-id="6" data-capacity="4">
+                    <rect x="300" y="145" width="50" height="50" rx="8" />
+                    <circle cx="325" cy="130" r="6" class="map-seat" />
+                    <circle cx="325" cy="210" r="6" class="map-seat" />
+                    <circle cx="285" cy="170" r="6" class="map-seat" />
+                    <circle cx="365" cy="170" r="6" class="map-seat" />
+                    <text x="325" y="170">T6 (4)</text>
+                  </g>
+
+                  <!-- VIP Booths (Large Seating 6-8) -->
+                  <!-- Table VIP 7 (Central top, near stage) -->
+                  <g class="map-table available" id="table-7" data-table-id="7" data-capacity="6">
+                    <path d="M 220 90 A 30 30 0 1 1 280 90 Z" />
+                    <circle cx="210" cy="85" r="7" class="map-seat" />
+                    <circle cx="225" cy="115" r="7" class="map-seat" />
+                    <circle cx="250" cy="125" r="7" class="map-seat" />
+                    <circle cx="275" cy="115" r="7" class="map-seat" />
+                    <circle cx="290" cy="85" r="7" class="map-seat" />
+                    <text x="250" y="85">V7 (6)</text>
+                  </g>
+
+                  <!-- Table VIP 8 (Central bottom, luxury VIP booth) -->
+                  <g class="map-table available" id="table-8" data-table-id="8" data-capacity="8">
+                    <rect x="220" y="225" width="60" height="50" rx="10" />
+                    <circle cx="210" cy="235" r="7" class="map-seat" />
+                    <circle cx="210" cy="265" r="7" class="map-seat" />
+                    <circle cx="290" cy="235" r="7" class="map-seat" />
+                    <circle cx="290" cy="265" r="7" class="map-seat" />
+                    <circle cx="235" cy="212" r="7" class="map-seat" />
+                    <circle cx="265" cy="212" r="7" class="map-seat" />
+                    <circle cx="235" cy="288" r="7" class="map-seat" />
+                    <circle cx="265" cy="288" r="7" class="map-seat" />
+                    <text x="250" y="250">V8 (8)</text>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- Right Side: Contact, Price Detail & Summary -->
+            <div class="floorplan-sidebar">
+              <h3 class="booking-step-title"><span>3</span> Guest Details</h3>
+              <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem;">
+                <div class="form-group">
+                  <label for="guest-name">Full Name</label>
+                  <div class="form-input-wrapper">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" class="form-input" id="guest-name" placeholder="John Doe" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="guest-phone">Phone Number</label>
+                  <div class="form-input-wrapper">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <input type="tel" class="form-input" id="guest-phone" placeholder="090 123 4567" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="guest-email">Email Address</label>
+                  <div class="form-input-wrapper">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" class="form-input" id="guest-email" placeholder="john@example.com" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="guest-occasion">Occasion</label>
+                  <div class="form-input-wrapper">
+                    <i class="fa-solid fa-cake-candles"></i>
+                    <select class="form-input" id="guest-occasion">
+                      <option value="none">No Special Occasion</option>
+                      <option value="birthday">Birthday Celebration</option>
+                      <option value="anniversary">Anniversary Dinner</option>
+                      <option value="business">Business Meeting</option>
+                      <option value="date">Romantic Date</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="guest-notes">Special Requests</label>
+                  <textarea class="form-input" id="guest-notes" rows="2" placeholder="Dietary restrictions, allergies, seating preferences..." style="padding-left: 1rem; resize: none;"></textarea>
+                </div>
+              </div>
+
+              <!-- Booking Summary Card -->
+              <div class="booking-summary-panel">
+                <h4 class="booking-summary-header gold-text">Reservation Summary</h4>
+                <div class="booking-summary-details">
+                  <div class="summary-row">
+                    <span class="summary-label">Date & Time:</span>
+                    <span class="summary-val" id="summary-datetime">Please select...</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Guests Count:</span>
+                    <span class="summary-val" id="summary-guests">2 Guests</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Selected Table:</span>
+                    <span class="summary-val highlight" id="summary-table">None</span>
+                  </div>
+                  <div class="summary-row">
+                    <span class="summary-label">Table Seating Cap:</span>
+                    <span class="summary-val" id="summary-table-cap">N/A</span>
+                  </div>
+                </div>
+                <div class="booking-price-info">
+                  <i class="fa-solid fa-circle-info" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+                  <strong>Minimum Spend Note:</strong> VIP booths (6-8 guests) require a minimum spend of $150. Standard tables have no fee.
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn-submit-booking" style="width: 100%;">Confirm Booking</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col footer-about">
+        <a href="#home" class="logo" style="margin-bottom: 1.5rem;">
+          <i class="fa-solid fa-utensils logo-icon"></i>
+          <span>L'ÉTOILE <span class="gold-text">DORÉE</span></span>
+        </a>
+        <p>Elevating fine dining to a sensory experience. Our modern culinary salon offers delicate harmonies of seasonal taste, fine champagne pairings, and exceptional personalized service.</p>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fa-brands fa-tripadvisor"></i></a>
+          <a href="#" class="social-icon"><i class="fa-brands fa-yelp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><i class="fa-solid fa-chevron-right"></i><a href="#home">Home</a></li>
+          <li><i class="fa-solid fa-chevron-right"></i><a href="#about">Our Story</a></li>
+          <li><i class="fa-solid fa-chevron-right"></i><a href="#menu">Chef's Menu</a></li>
+          <li><i class="fa-solid fa-chevron-right"></i><a href="#booking">Table Reservation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><i class="fa-solid fa-location-dot"></i> 48 Gold Avenue, Suite 10, District 1, HCMC</li>
+          <li><i class="fa-solid fa-phone"></i> +84 28 3824 0000</li>
+          <li><i class="fa-solid fa-envelope"></i> reserve@letoiledoree.com</li>
+          <li><i class="fa-solid fa-circle-question"></i> <a href="#booking" style="text-decoration: underline;">Support Center</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Opening Hours</h4>
+        <div class="footer-hours-grid">
+          <span class="hours-day">Mon - Fri:</span>
+          <span>5:00 PM - 11:30 PM</span>
+          <span class="hours-day">Sat - Sun:</span>
+          <span>4:30 PM - 12:00 AM</span>
+          <span class="hours-day">Note:</span>
+          <span>Kitchen orders close 1 hour before shutdown.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 L'Étoile Dorée Restaurant. All rights reserved.</p>
+      <div style="display:flex; gap: 1.5rem;">
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking History Drawer (Modal) -->
+  <div class="modal-overlay" id="bookings-modal">
+    <div class="modal-content glass-panel">
+      <div class="modal-close" id="bookings-modal-close">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="modal-header">
+        <i class="fa-solid fa-calendar-check"></i>
+        <h3 class="gold-text">My Reservations</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">View and manage your active tables at L'Étoile Dorée</p>
+      </div>
+      <div class="modal-body">
+        <div class="bookings-list" id="bookings-list-container">
+          <!-- Dynamically populated from JS -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="btn-close-bookings-modal">Close Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-content glass-panel" style="text-align: center; max-width: 450px;">
+      <div class="modal-close" id="success-modal-close">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="modal-header">
+        <i class="fa-solid fa-circle-check" style="color: var(--success); font-size: 3.5rem;"></i>
+        <h3 class="gold-text" style="margin-top: 1rem;">Reservation Confirmed</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">A culinary experience awaits you.</p>
+      </div>
+      <div class="modal-body" style="background: rgba(255,255,255,0.02); border-radius: 8px; padding: 1.5rem; border: 1px solid var(--border-light); text-align: left; font-size: 0.9rem;">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Booking ID:</span> <strong id="success-id" class="gold-text">LD-938210</strong>
+          <span style="color: var(--text-muted);">Guest Name:</span> <span id="success-name">-</span>
+          <span style="color: var(--text-muted);">Date & Time:</span> <span id="success-datetime">-</span>
+          <span style="color: var(--text-muted);">Table Seat:</span> <strong id="success-table" style="color: var(--text-light);">-</strong>
+          <span style="color: var(--text-muted);">Guests:</span> <span id="success-guests">-</span>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--accent-gold); margin-top: 1rem; text-align: center; font-style: italic;">A confirmation email has been sent to your email.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-success-close">Wonderful, Thank You</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Javascript File -->
+  <script src="app.js"></script>
+</body>
+</html>
